@@ -67,14 +67,17 @@
 
           <a-layout  id="content" style="padding: 0 24px 24px">
             <a-breadcrumb style="margin: 16px 0">
-              <a-breadcrumb-item>Home</a-breadcrumb-item>
-              <a-breadcrumb-item>List</a-breadcrumb-item>
-              <a-breadcrumb-item>App</a-breadcrumb-item>
+<!--              <a-breadcrumb-item>Home</a-breadcrumb-item>-->
+<!--              <a-breadcrumb-item>List</a-breadcrumb-item>-->
+<!--              <a-breadcrumb-item>App</a-breadcrumb-item>-->
             </a-breadcrumb>
             <a-layout-content
                 :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }"
             >
-              <p v-for="i in 50">{{i}}</p>
+              <div id="content-container">
+                <card class="card-item" v-for="i in 100"></card>
+              </div>
+
             </a-layout-content>
           </a-layout>
         </a-layout>
@@ -86,12 +89,19 @@
     </template>
 
     <script>
+
+    import Card from "@/components/Card";
+
+
       export default {
         data() {
           return {
             collapsed: false,
           };
         },
+        components:{
+          card:Card,
+        }
       };
     </script>
 
@@ -99,10 +109,14 @@
     <style>
     #content{
       position: relative;
-      left: 200px;
+      /*left: 200px;*/
+      width: auto;
     }
     #sider{
-      position: fixed;
+      display: inline-block;
+      /*position: fixed;*/
+      position: sticky;
+      top: 80px;
       height: 100%;
       margin-top: 10px;
       background-color: #fff;
@@ -142,5 +156,21 @@
       /*text-align: right;*/
       justify-content: space-around;
     }
+
+    #content-container{
+      display: flex;
+      flex-flow: row;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-content: flex-start;
+    }
+    .card-item{
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+
+
     </style>
 
